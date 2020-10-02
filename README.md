@@ -6,10 +6,10 @@ Description:
 This is a daily planner that will show you the date and time, change color based on the hour of the day, and allow you to save events on the calendar.
 
 Links: 
-Repository Link - 
-Gitpages link - 
+Repository Link - https://github.com/kyliemegan24/Daily_Planner
+Gitpages link - https://kyliemegan24.github.io/Daily_Planner/.
 
-Usage Insturctions:
+Usage Instructions:
 
 Type in your event in the hour of your choice. Click save to save the event.
 
