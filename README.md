@@ -13,7 +13,7 @@ Usage Instructions:
 
 Type in your event in the hour of your choice. Click save to save the event.
 
-<img src="quiz-image-one.png">
+<img src="dailyplanner.png">
 
 Installation: N/A
 
