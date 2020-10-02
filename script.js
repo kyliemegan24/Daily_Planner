@@ -1,21 +1,15 @@
 
 $(document).ready(function() {
+    //setting current day/time
         var currentDay = $("#currentDay");
         var date = new Date();
         currentDay.append(date);
-    
 
-        //var container = document.getElementsByClassName("container");
-        //put elijah notes here?
-        //for (var i = 0; i < hours.length; i++) {
-        //var newHourDiv = $("<div class='row'>" + hours[i] + "</div>");
-        //var textbox = $("<input type='text' id='myInput'></input>");
-       
         var date = new Date();
         var hourNow = date.getHours(); 
         console.log(hourNow);
         
-
+    //assigning past present and future to timeblocks
         if (hourNow < 9) {
             $("#nineAM").addClass("future");
             $("#tenAM").addClass("future");
@@ -148,155 +142,48 @@ $(document).ready(function() {
             $("#fivePM").addClass("past");
         };
 
+        var hourBoxs = $("textarea");
+        console.log(hourBoxs)
 
-
-
-        saveBtn = $(".saveBtn").on("click", function() {
-                var task = document.getElementsByClassName("myInput").value;
-                localStorage.setItem("calendar item", JSON.stringify(task));
-                updateHTML();
-        });
-            
-
-        
-
-        function updateHTML() {
-            var task = getTask();
-            document.getElementsByClassName("myInput").innerHTML = task;
+        for (var i=0; i<hourBoxs.length; i++) {
+            var txtVal = hourBoxs[i].getAttribute("value");
+            var areaWithVal = `textarea[value='` + txtVal + `']`;
+            console.log(areaWithVal);
+     
         }
+
+        var locStorageKey = "";
+        var locStorageVal = "";
+
+        //saving to page/local storage
       
+        $(".btn").on("click",function(){  
+            var valueBtn = $(this).val();
+            var areaSelector = `textarea[value='` + valueBtn + `']`;
+            console.log(areaSelector)
+            locStorageVal = $(areaSelector).val();
+            locStorageKey = valueBtn;
+            localStorage.setItem(locStorageKey,locStorageVal);
+        });
+        
+        
+        
+        for (var i=0; i<localStorage.length; i++) {
+            var keyStorage = localStorage.key(i);
+            var valueStorage = localStorage.getItem(keyStorage);
+            
+            
+            var areaSelector = `textarea[value='` + keyStorage + `']`;
 
-        function getTask() {
-            return localStorage.getItem("myInput");
+            console.log(areaSelector);
+            $(areaSelector).val(valueStorage);   
         }
-
-        /*function updateHTML () {
-            var task = getTask();
-            document.getElementsByClassName("myInput").innerHTML = task;
-        }*/
-
-        /*function saveItem() {
-            var task = document.getElementsByClassName("myInput").value;
-            localStorage.setItem("calendar item", task);
-            updateHTML();
-        };*/
-
-        
-       
-
-
         
 
+
+    });
         
 
-        /*function saveItem() {
-            var inputVal = document.getElementsByClassName("myInput").value;
-            document.getElementById("myInput").innerHTML = inputVal;
-            localStorage.setItem("calendar item", inputVal);
-            document.getElementById("myInput").innerHTML = localStorage.getItem("calendar item");
-        };*/
-
-       
-
-
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //var hoursArray = hours[i];
-
-       /* for (i = 0; i < hours.length; i++) {
-            
-            var nine = document.getElementById("nineAM");
-            var ten = document.getElementById("tenAM");
-            var eleven = document.getElementById("elevenAM");
-            var twelve = document.getElementById("twelvePM");
-            var one = document.getElementById("onePM");
-            var two = document.getElementById("twoPM");
-            var three = document.getElementById("threePM");
-            var four = document.getElementById("fourPM");
-            var five = document.getElementById("fivePM");
-            //const element = array[index];
-
-            var myInput = document.getElementsByClassName("myInput");
-
-            console.log(myInput);
-
-            if (hours[i] < hourNow - 9) {
-                
-                nine.classList.add("future");
-                ten.classList.add("future");
-                eleven.classList.add("future");
-                twelve.classList.add("future");
-                one.classList.add("future");
-                two.classList.add("future");
-                three.classList.add("future");
-                four.classList.add("future");
-                five.classList.add("future");
-        
-            } else if (hours[i] === hourNow - 9) {
-                nine.classList.add("present");
-                ten.classList.add("present");
-                eleven.classList.add("present");
-                twelve.classList.add("present");
-                one.classList.add("present");
-                two.classList.add("present");
-                three.classList.add("present");
-                four.classList.add("present");
-                five.classList.add("present");
-            } else {
-                nine.classList.add("past");
-                ten.classList.add("past");
-                eleven.classList.add("past");
-                twelve.classList.add("past");
-                one.classList.add("past");
-                two.classList.add("past");
-                three.classList.add("past");
-                four.classList.add("past");
-                five.classList.add("past");
-            };
-            
-
-           
-
-
-
-
-
-
-        }*/
-           
-
-        //newHourDiv.append(textbox);
-        //container.append(newHourDiv);
-
-        //var saveButton = $("<btn class='saveBtn saveBtn i:hover'>save</btn>");
-
-        //newHourDiv.append(saveButton);
-
-
-    
-    
-    
-   
 
 
 
