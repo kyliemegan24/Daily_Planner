@@ -159,10 +159,10 @@ $(document).ready(function() {
       
         $(".btn").on("click",function(){  
             var valueBtn = $(this).val();
-            var areaSelector = `textarea[value='` + valueBtn + `']`;
-            console.log(areaSelector)
-            locStorageVal = $(areaSelector).val();
-            locStorageKey = valueBtn;
+            // var areaSelector = `textarea[value='` + valueBtn + `']`;
+            console.log($(this).siblings().val());
+            locStorageVal = $(this).siblings().val();
+            locStorageKey = $(this).attr("value");
             localStorage.setItem(locStorageKey,locStorageVal);
         });
         
